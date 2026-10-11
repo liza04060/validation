@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            color: #4a4a4a;
+
+            background-image: url('BG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .card {
+            padding: 30px 35px;
+            width: 420px;
+            border-radius: 6px;
+
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        h2 {
+            text-align: center;
+            color: #5a6b5a;
+            margin: 0 0 22px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            color: #5a6b5a;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #cdd6cd;
+            border-radius: 6px;
+            font-size: 10px;
+            font-family: 'Press Start 2P', monospace;
+            color: #4a4a4a;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.25s ease;
+            line-height: 1.6;
+        }
+
+        input::placeholder {
+            font-size: 9px;
+            color: #a8b0a8;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #8fa88f;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(143, 168, 143, 0.2);
+        }
+
+        input:valid:not(:placeholder-shown) {
+            border-color: #9ec99e;
+        }
+
+        input:invalid:not(:placeholder-shown) {
+            border-color: #d99a9a;
+        }
+
+        .hint {
+            font-size: 8px;
+            color: #7a8a7a;
+            margin-top: 5px;
+            display: block;
+            line-height: 1.6;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 6px;
+
+            background: #a8b8a8;
+            color: white;
+            font-size: 12px;
+            font-family: 'Press Start 2P', monospace;
+            cursor: pointer;
+            line-height: 1.6;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background: #96a896;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Регистрация</h2>
+
+        <form action="/register" method="POST">
+
+            <label for="fullname">ФИО</label>
+            <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Иванов Иван Иванович"
+                pattern="^[A-Za-zА-Яа-яЁё]+(\s+[A-Za-zА-Яа-яЁё]+)*$"
+                title="Только буквы"
+                required>
+            <span class="hint">Только буквы</span>
+
+            <label for="login">Логин</label>
+            <input
+                type="text"
+                id="login"
+                name="login"
+                placeholder="Любой логин"
+                required>
+            <span class="hint">Любые символы</span>
+
+            <label for="email">Email</label>
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="user@example.com"
+                pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                title="Только латиница"
+                required>
+            <span class="hint">Только латиница: name@mail.com</span>
+
+            <label for="age">Возраст</label>
+            <input
+                type="text"
+                id="age"
+                name="age"
+                placeholder="25"
+                pattern="^(1[89]|[2-9]\d)$"
+                title="Возраст от 18 до 99 лет"
+                required>
+            <span class="hint">От 18 до 99 лет</span>
+
+            <label for="password">Пароль</label>
+            <input
+                type="text"
+                id="password"
+                name="password"
+                placeholder="MyPassword#2024"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d.*\d)(?=.*[^A-Za-z0-9]).{6,}$"
+                title="Минимум 6 символов. Латиница, разный регистр, цифры и символы"
+                required>
+            <span class="hint">Минимум 6 символов. Латиница, разный регистр, цифры и символы</span>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+
+</body>
+</html>
